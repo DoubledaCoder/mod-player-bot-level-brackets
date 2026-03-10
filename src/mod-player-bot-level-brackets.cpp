@@ -205,7 +205,7 @@ static bool IsPlayerBot(Player* player)
     {
         return false;
     }
-    PlayerbotAI* botAI = sPlayerbotsMgr.GetPlayerbotAI(player);
+    PlayerbotAI* botAI = PlayerbotsMgr::instance().GetPlayerbotAI(player);
     return botAI && botAI->IsBotAI();
 }
 
@@ -675,7 +675,7 @@ static void AdjustBotToRange(Player* bot, int targetRangeIndex, const LevelRange
 
     if (g_BotDistFullDebugMode)
     {
-        PlayerbotAI* botAI = sPlayerbotsMgr.GetPlayerbotAI(bot);
+        PlayerbotAI* botAI = PlayerbotsMgr::instance().GetPlayerbotAI(bot);
         std::string playerClassName = botAI ? botAI->GetChatHelper()->FormatClass(bot->getClass()) : "Unknown";
         std::string playerFaction = IsAlliancePlayerBot(bot) ? "Alliance" : "Horde";
         LOG_INFO("server.loading",
